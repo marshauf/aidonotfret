@@ -1,10 +1,21 @@
 <?php
 
 
+interface iDice  {
+    public function roll();
+}
+
+class LocalDice implements iDice {
+
+    public function roll() {
+        return rand(1, 6);
+    }
+}
+
 /**
  * Dice simulates a six sided dice.
  */
-class Dice
+class Dice implements iDice
 {
 	private static $url = "https://api.random.org/json-rpc/1/invoke";
     private static $precalculate = 500; // request random numbers preemptively to reduce API requests
